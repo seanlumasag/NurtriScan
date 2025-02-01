@@ -1,11 +1,102 @@
 <!DOCTYPE html>
-<html>
 <head>
     <title>NutriScan</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 10px;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: steelblue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4CAF50;
+        }
+        #camera-preview {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+    </style>
+    <style>
+        h1 {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>App that determines if food product is healthy or not.</h1>
-    </body>
-</html>
+    <header>
+        <h1 style="color:steelblue;">Nutrition Scanner</h1>
+        <p>Scan food products to determine their health grade.</p>
+        <style>
+            header {
+                text-align: center;
+                font-weight: bold;
+            }
+        </style>
+    </header>
     
+    <main>
+        <section id="camera-app">
+            <h2 style="color:Black;">Camera Application</h2>
+            <p>Use your camera to scan the nutrition information on food products.</p>
+            <style>
+                section {
+                    font-weight: bold;
+                }
+            </style>
+            <button id="scan-button">Scan Now</button>
+            <div id="camera-preview"></div>
+        </section>
 
+        <section id="nutrition-info">
+            <h2 style="color:Black;">Nutrition Information</h2>
+            <p id="nutrition-details">Nutrition details will appear here after scanning.</p>
+            <style>
+                section {
+                    font-weight: bold;
+                }
+            </style>
+        </section>
+
+        <section id="health-grade">
+            <h2 style="color:black;">Health Grade</h2>
+            <p id="health-grade-result">Your health grade will be displayed here.</p>
+            <style>
+                section {
+                    font-weight: bold;
+                }
+            </style>
+        </section>
+    </main>
+    <script>
+        const cameraPreview = document.getElementById('camera-preview');
+
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                cameraPreview.srcObject = stream;
+            } catch (error) {
+                console.error('Error accessing the camera', error);
+            }
+        }
+        window.addEventListener('load', startCamera);
+    </script>
+</body>
+</html>
